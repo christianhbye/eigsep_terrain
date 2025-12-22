@@ -278,8 +278,11 @@ def permittivity_from_conductivity(conductivity, freqs):
 
 def reflection_coefficient(eta, eta0=1):
     '''Return the reflection coefficient crossing from eta0 to eta
-    [refractive index]. This assumes normal incidence.'''
-    return np.abs((eta0 - eta) / (eta0 + eta))**2
+    [refractive index]. This assumes normal incidence.
+    We return the complex reflection coefficient appropriate for
+    voltage or electric field. Power quantities should use the abs squared.
+    '''
+    return (eta0 - eta) / (eta0 + eta)
 
 def are_points_in_polygon(vertices, points):
     """
